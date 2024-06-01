@@ -1,0 +1,43 @@
+steps:
+  # Building the docker container
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - build
+      - '-t'
+      - '$_AR_HOSTNAME/$PROJECT_ID/$_AR_REPO/$_SERVICE_NAME:$COMMIT_SHA'
+      - .
+  # Pushing docker container image to artifact registry
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - push
+      - '$_AR_HOSTNAME/$PROJECT_ID/$_AR_REPO/$_SERVICE_NAME:$COMMIT_SHA'
+
+  #cloud run deployment
+  #- name: gcr.io/google.com/cloudsdktool/cloud-sdk
+  #  args:
+  #    - run
+  #    - deploy
+  #    - $_SERVICE_NAME
+  #    - '--image'
+  #    - '$_AR_HOSTNAME/$PROJECT_ID/$_AR_REPO/$_SERVICE_NAME:$COMMIT_SHA'
+  #    - '--region'
+  #    - $_DEPLOY_REGION
+  #    - '--platform'
+  #    - $_PLATFORM
+  #    - '--port' 
+  #    - '8888'
+  #  entrypoint: gcloud
+
+#To avoid the following error:
+#build.options.default_logs_bucket_behavior option, or (c) use either CLOUD_LOGGING_ONLY / NONE logging options
+options:
+  logging: CLOUD_LOGGING_ONLY
+  substitutionOption: ALLOW_LOOSE
+
+timeout: 1200s
+
+
+
+
+
+
