@@ -4,6 +4,8 @@ Continuous training means that the ML system automatically and continuously retr
 ![alt text](images/architecture.png)
 
 
+In this repo, we demonstrate contonous training from both code and data changes.
+
 ### Reference
 1. https://docs.aws.amazon.com/prescriptive-guidance/latest/mlops-checklist/training.html#:~:text=Continuous%20training%20means%20that%20the,model%20changes%2C%20or%20code%20changes.
 
