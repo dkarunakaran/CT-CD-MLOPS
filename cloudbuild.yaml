@@ -48,14 +48,14 @@ steps:
       - '--memory'
       - '512M'
 
-    # Triggering the Cloud Functions using HTTP trigger with curl in the bash script
-    - name: gcr.io/cloud-builders/gcloud
-      entrypoint: "bash"
-      args:
-        - "-c"
-        - |
-            RESPONSE=$(curl -i https://us-central1-mlops-heavy-workflow-project.cloudfunctions.net/cloudbuild_mnist_vertex_pipeline_cloudfunction | grep HTTP | cut -d' ' -f2)
-            if [ "200" != "$$RESPONSE" ]; then exit 1; fi
+  # Triggering the Cloud Functions using HTTP trigger with curl in the bash script
+  - name: gcr.io/cloud-builders/gcloud
+    entrypoint: "bash"
+    args:
+      - "-c"
+      - |
+          RESPONSE=$(curl -i https://us-central1-mlops-heavy-workflow-project.cloudfunctions.net/cloudbuild_mnist_vertex_pipeline_cloudfunction | grep HTTP | cut -d' ' -f2)
+          if [ "200" != "$$RESPONSE" ]; then exit 1; fi
 
 #To avoid the following error:
 #build.options.default_logs_bucket_behavior option, or (c) use either CLOUD_LOGGING_ONLY / NONE logging options
