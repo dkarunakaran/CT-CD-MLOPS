@@ -39,7 +39,7 @@ steps:
       - '--region'
       - 'us-central1'
       - '--source'
-      - 'gs://mlops-heavy-workflow-bucket/cloud_functions/mlops-heavy-workflow-bucket/cloud_functions/cloudbuild_mnist_vertex_pipeline_cloudfunction.zip' # it has to be stored as zip file with main.py and requirements.txt
+      - 'gs://mlops-heavy-workflow-bucket/cloud_functions/cloudbuild_mnist_vertex_pipeline_cloudfunction.zip' # it has to be stored as zip file with main.py and requirements.txt
       - '--trigger-http'
       - '--gen2'
       - '--runtime'
