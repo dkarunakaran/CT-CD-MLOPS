@@ -35,14 +35,17 @@ steps:
       - gcloud
       - functions
       - deploy
-      - 'cloudbuild-vertex-pipeline-function-cb'
+      - 'hello_http' # function name in the main.py
       - '--region'
       - 'us-central1'
       - '--source'
-      - 'gs://mlops-heavy-workflow-bucket/cloud_functions/cloudbuild-vertex-pipeline-function-cb.zip'
+      - 'gs://mlops-heavy-workflow-bucket/cloud_functions/cloudbuild-vertex-pipeline-function-cb.zip' # it has to be stored as zip file with main.py and requirements.txt
       - '--trigger-http'
+      - '--gen2'
       - '--runtime'
       - 'python312'
+      - '--memory'
+      - '512M'
 
 #To avoid the following error:
 #build.options.default_logs_bucket_behavior option, or (c) use either CLOUD_LOGGING_ONLY / NONE logging options
