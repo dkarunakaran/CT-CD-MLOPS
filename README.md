@@ -6,6 +6,26 @@ Continuous training means that the ML system automatically and continuously retr
 
 In this repo, we demonstrate continous training from both code and data changes.
 
+## Aritfact Registry or Previosuly, Container Registry
+1. We can build the container and push to artifact registry using the below code
+```
+# Building the docker container
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - build
+      - '-t'
+      - '$_AR_HOSTNAME/$PROJECT_ID/$_AR_REPO/$_SERVICE_NAME:$COMMIT_SHA'
+      - .
+  # Pushing docker container image to artifact registry
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - push
+      - '$_AR_HOSTNAME/$PROJECT_ID/$_AR_REPO/$_SERVICE_NAME:$COMMIT_SHA'
+
+```
+2. These variable are coming from the Cloud Build trigger page which we set up to bind the cloud build and GitHub. 
+
+
 ## Cloud Functions
 There are two ways to create cloud functions. The one is though cloud build which I will explain here and the second method is by creating it manually through Cloud Functions page (you can see the instruction at "Manual Cloud Functions setup" section)
 
