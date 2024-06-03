@@ -35,7 +35,7 @@ steps:
       - gcloud
       - functions
       - deploy
-      - cloudbuild-vertex-pipeline-function-cb
+      - 'cloudbuild-vertex-pipeline-function-cb'
       - '--region'='us-central1'
       - '--source'='gs://mlops-heavy-workflow-bucket/cloud_functions/cloudbuild-vertex-pipeline-function-cb.zip'
       - '--trigger-http'
