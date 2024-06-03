@@ -30,16 +30,19 @@ steps:
 
   
   # Creating Cloud Functions
-  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
     args:
       - gcloud
       - functions
       - deploy
       - 'cloudbuild-vertex-pipeline-function-cb'
-      - '--region'='us-central1'
-      - '--source'='gs://mlops-heavy-workflow-bucket/cloud_functions/cloudbuild-vertex-pipeline-function-cb.zip'
+      - '--region'
+      - 'us-central1'
+      - '--source'
+      - 'gs://mlops-heavy-workflow-bucket/cloud_functions/cloudbuild-vertex-pipeline-function-cb.zip'
       - '--trigger-http'
-      - '--runtime'='python312'
+      - '--runtime'
+      - 'python312'
 
 #To avoid the following error:
 #build.options.default_logs_bucket_behavior option, or (c) use either CLOUD_LOGGING_ONLY / NONE logging options
